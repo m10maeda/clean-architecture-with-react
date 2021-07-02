@@ -64,6 +64,15 @@
     ],
     "parserOptions": {
       "project": "./tsconfig.json"
+    },
+    "rules": {
+      "no-underscore-dangle": [
+        "error",
+        {
+          "allowAfterThis": true,
+          "enforceInMethodNames": true
+        }
+      ]
     }
   },
   "browserslist": {
