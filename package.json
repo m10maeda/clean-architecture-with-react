@@ -72,6 +72,12 @@
           "allowAfterThis": true,
           "enforceInMethodNames": true
         }
+      ],
+      "@typescript-eslint/no-empty-interface": [
+        "error",
+        {
+          "allowSingleExtends": true
+        }
       ]
     }
   },
