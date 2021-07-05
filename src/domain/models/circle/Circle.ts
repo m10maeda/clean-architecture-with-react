@@ -20,6 +20,10 @@ export default class Circle {
 
   private _members: Members;
 
+  public get members(): Iterable<UserId> {
+    return this._members;
+  }
+
   public countMembers(): number {
     // owner の分1プラス
     return this._members.countMembers() + 1;
