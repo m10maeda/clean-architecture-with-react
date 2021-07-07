@@ -23,9 +23,8 @@ export default class UserRegisterInteractor implements IUserRegisterUseCase {
   ): Promise<UserRegisterUseCaseResponse> {
     const name = new UserName(request.name);
     const user = await this.userFactory.create(name);
-    const isExist = await this.userService.exists(user);
 
-    if (isExist) {
+    if (await this.userService.exists(user)) {
       throw new CanNotRegisterUserError(user, 'ユーザーは既に存在しています。');
     }
 
