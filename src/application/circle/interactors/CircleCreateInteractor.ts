@@ -37,9 +37,8 @@ export default class CircleCreateInteractor implements ICircleCreateUseCase {
 
     const name = new CircleName(request.name);
     const circle = await this.circleFactory.create(name, owner);
-    const isExist = await this.circleService.exists(circle);
 
-    if (isExist) {
+    if (await this.circleService.exists(circle)) {
       throw new CanNotRegisterCircleError(
         circle,
         'サークルは既に存在しています。',
