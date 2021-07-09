@@ -6,19 +6,19 @@ import {
   Members,
 } from '../../domain/models/circle';
 import { User } from '../../domain/models/user';
-import { ISerialNumberAssigner } from './ISerialNumberAssigner';
+import SerialNumberAssigner from './SerialNumberAssigner';
 
-export default class CircleFactory implements ICircleFactory {
-  private readonly serialNumberAssigner: ISerialNumberAssigner;
+export default class InMemoryCircleFactory implements ICircleFactory {
+  private readonly serialNumberAssigner: SerialNumberAssigner;
 
   public async create(name: CircleName, owner: User): Promise<Circle> {
-    const serialNumber = await this.serialNumberAssigner.next();
+    const serialNumber = this.serialNumberAssigner.next();
     const id = new CircleId(serialNumber);
 
     return new Circle(id, name, owner.id, new Members([]));
   }
 
-  public constructor(serialNumberAssigner: ISerialNumberAssigner) {
+  public constructor(serialNumberAssigner: SerialNumberAssigner) {
     this.serialNumberAssigner = serialNumberAssigner;
   }
 }
