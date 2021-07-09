@@ -7,7 +7,7 @@ import {
 } from '../../domain/models/user';
 import SerialNumberAssigner from './SerialNumberAssigner';
 
-export default class UserFactory implements IUserFactory {
+export default class InMemoryUserFactory implements IUserFactory {
   private readonly serialNumberAssigner: SerialNumberAssigner;
 
   public async create(name: UserName): Promise<User> {

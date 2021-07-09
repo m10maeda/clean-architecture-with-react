@@ -8,7 +8,7 @@ import {
 import { User } from '../../domain/models/user';
 import SerialNumberAssigner from './SerialNumberAssigner';
 
-export default class CircleFactory implements ICircleFactory {
+export default class InMemoryCircleFactory implements ICircleFactory {
   private readonly serialNumberAssigner: SerialNumberAssigner;
 
   public async create(name: CircleName, owner: User): Promise<Circle> {
