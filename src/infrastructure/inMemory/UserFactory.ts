@@ -5,19 +5,19 @@ import {
   UserName,
   UserType,
 } from '../../domain/models/user';
-import { ISerialNumberAssigner } from './ISerialNumberAssigner';
+import SerialNumberAssigner from './SerialNumberAssigner';
 
 export default class UserFactory implements IUserFactory {
-  private readonly serialNumberAssigner: ISerialNumberAssigner;
+  private readonly serialNumberAssigner: SerialNumberAssigner;
 
   public async create(name: UserName): Promise<User> {
-    const serialNumber = await this.serialNumberAssigner.next();
+    const serialNumber = this.serialNumberAssigner.next();
     const id = new UserId(serialNumber);
 
     return new User(id, name, UserType.Normal);
   }
 
-  public constructor(serialNumberAssigner: ISerialNumberAssigner) {
+  public constructor(serialNumberAssigner: SerialNumberAssigner) {
     this.serialNumberAssigner = serialNumberAssigner;
   }
 }
