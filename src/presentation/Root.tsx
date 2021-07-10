@@ -1,7 +1,7 @@
 import React, { VFC } from 'react';
 import { Provider } from 'react-redux';
-import createStore from './state/createStore';
-import Router from './ui/Router';
+import { createStore } from './state';
+import { Router } from './ui';
 
 const store = createStore();
 
