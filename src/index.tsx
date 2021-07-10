@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from './presentation/ui';
+import Root from './presentation';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
