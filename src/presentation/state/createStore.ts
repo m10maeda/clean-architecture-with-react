@@ -4,11 +4,21 @@ import {
   getDefaultMiddleware,
   ThunkAction,
 } from '@reduxjs/toolkit';
+import { createLogger } from 'redux-logger';
 import rootReducer from './features';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const createStore = () => {
-  const middleware = getDefaultMiddleware();
+  const middleware = [...getDefaultMiddleware()];
+
+  if (process.env.NODE_ENV === 'development') {
+    const logger = createLogger({
+      diff: true,
+      collapsed: true,
+    });
+
+    middleware.push(logger);
+  }
 
   const store = configureStore({
     reducer: rootReducer,
