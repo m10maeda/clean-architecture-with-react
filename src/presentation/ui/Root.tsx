@@ -1,5 +1,6 @@
 import React, { VFC } from 'react';
+import Router from './Router';
 
-const Root: VFC = () => <div>Root</div>;
+const Root: VFC = () => <Router />;
 
 export default Root;
