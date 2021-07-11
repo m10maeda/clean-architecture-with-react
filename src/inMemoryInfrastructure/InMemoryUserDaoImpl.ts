@@ -1,5 +1,5 @@
-import { User, UserId, UserName, UserType } from '../../domain/models/user';
-import { IUserDao } from '../../gateway/dao';
+import { User, UserId, UserName, UserType } from '../domain/models/user';
+import { IUserDao } from '../gateway/dao';
 
 type UserSchema = {
   readonly id: string;

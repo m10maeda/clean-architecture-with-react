@@ -1,11 +1,6 @@
-import {
-  Circle,
-  CircleId,
-  CircleName,
-  Members,
-} from '../../domain/models/circle';
-import { UserId } from '../../domain/models/user';
-import { ICircleDao } from '../../gateway/dao';
+import { Circle, CircleId, CircleName, Members } from '../domain/models/circle';
+import { UserId } from '../domain/models/user';
+import { ICircleDao } from '../gateway/dao';
 
 type CircleSchema = {
   readonly id: string;

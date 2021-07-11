@@ -4,7 +4,7 @@ import {
   UserId,
   UserName,
   UserType,
-} from '../../domain/models/user';
+} from '../domain/models/user';
 import SerialNumberAssigner from './SerialNumberAssigner';
 
 export default class InMemoryUserFactory implements IUserFactory {

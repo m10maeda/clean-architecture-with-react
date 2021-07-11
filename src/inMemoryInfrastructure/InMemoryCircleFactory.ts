@@ -4,8 +4,8 @@ import {
   CircleName,
   ICircleFactory,
   Members,
-} from '../../domain/models/circle';
-import { User } from '../../domain/models/user';
+} from '../domain/models/circle';
+import { User } from '../domain/models/user';
 import SerialNumberAssigner from './SerialNumberAssigner';
 
 export default class InMemoryCircleFactory implements ICircleFactory {
