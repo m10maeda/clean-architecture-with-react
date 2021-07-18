@@ -1,3 +1,2 @@
-// TODO: operations などの export 先が増えたら無効化コメントを消す
-// eslint-disable-next-line import/prefer-default-export
+export { default as AppLayout } from './AppLayout';
 export { default as Router } from './Router';
