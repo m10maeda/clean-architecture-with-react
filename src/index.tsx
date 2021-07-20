@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from './presentation';
+import Root, { createStore } from './presentation';
 import reportWebVitals from './reportWebVitals';
+
+const store = createStore();
 
 ReactDOM.render(
   <React.StrictMode>
-    <Root />
+    <Root store={store} />
   </React.StrictMode>,
   document.getElementById('root'),
 );

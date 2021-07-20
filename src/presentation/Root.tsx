@@ -5,9 +5,11 @@ import { createStore } from './state';
 import { AppLayout, Router } from './ui';
 import './ui/reboot.css';
 
-const store = createStore();
+type Props = {
+  store: ReturnType<typeof createStore>;
+};
 
-const Root: VFC = () => (
+const Root: VFC<Props> = ({ store }) => (
   <Provider store={store}>
     <BrowserRouter>
       <AppLayout>
