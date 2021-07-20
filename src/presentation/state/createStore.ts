@@ -28,6 +28,16 @@ const createStore = (preloadedState?: PreloadedState) => {
     preloadedState,
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  if (process.env.NODE_ENV === 'development' && (module as any).hot) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (module as any).hot.accept('./features', () => {
+      // eslint-disable-next-line global-require, @typescript-eslint/no-var-requires
+      const newRootReducer = require('./features').default;
+      store.replaceReducer(newRootReducer);
+    });
+  }
+
   return store;
 };
 
