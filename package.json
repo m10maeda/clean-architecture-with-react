@@ -92,7 +92,34 @@
       ],
       "react/prop-types": "off",
       "react/jsx-props-no-spreading": "off"
-    }
+    },
+    "overrides": [
+      {
+        "files": "src/presentation/state/features/**/*.ts",
+        "rules": {
+          "no-param-reassign": [
+            "error",
+            {
+              "props": true,
+              "ignorePropertyModificationsFor": [
+                "acc",
+                "accumulator",
+                "e",
+                "ctx",
+                "context",
+                "req",
+                "request",
+                "res",
+                "response",
+                "$scope",
+                "staticContext",
+                "draft"
+              ]
+            }
+          ]
+        }
+      }
+    ]
   },
   "browserslist": {
     "production": [
