@@ -7,8 +7,10 @@ import {
 import { createLogger } from 'redux-logger';
 import rootReducer from './features';
 
+type PreloadedState = ReturnType<typeof rootReducer>;
+
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-const createStore = () => {
+const createStore = (preloadedState?: PreloadedState) => {
   const middleware = [...getDefaultMiddleware()];
 
   if (process.env.NODE_ENV === 'development') {
@@ -23,6 +25,7 @@ const createStore = () => {
   const store = configureStore({
     reducer: rootReducer,
     middleware,
+    preloadedState,
   });
 
   return store;
