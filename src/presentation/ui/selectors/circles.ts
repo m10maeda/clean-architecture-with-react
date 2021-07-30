@@ -1,12 +1,6 @@
-import { createSelector, OutputSelector } from '@reduxjs/toolkit';
+import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from '../../state/createStore';
-import {
-  Circle,
-  CircleId,
-  CircleName,
-  State,
-} from '../../state/features/circles';
-import { State as UserState, UserId } from '../../state/features/users';
+import { Circle, CircleId, State } from '../../state/features/circles';
 import { getUsers } from './users';
 
 export const getCircles = (state: RootState): State => state.circles;
@@ -20,56 +14,76 @@ export const allCircleIdsSelector = createSelector(getCircles, (state) =>
   Object.keys(state),
 );
 
-export const createCircleNameSelector = (
-  id: CircleId,
-): OutputSelector<
-  RootState,
-  CircleName | undefined,
-  (response: Circle) => CircleName | undefined
-> =>
-  createSelector(getCircleById(id), (circle) =>
-    circle !== undefined ? circle.name : undefined,
-  );
+export const createCircleNameSelector = createSelector(
+  getCircles,
+  (circles) => (id: CircleId) => {
+    const circle = circles[id];
 
-export const createCircleOwnerIdSelector = (
-  id: CircleId,
-): OutputSelector<
-  RootState,
-  UserId | undefined,
-  (response: Circle) => UserId | undefined
-> => createSelector(getCircleById(id), (circle) => circle?.owner);
-
-export const createCircleOwnerNameSelector = (
-  id: CircleId,
-): OutputSelector<
-  RootState,
-  UserId | undefined,
-  (res1: Circle | undefined, res2: UserState) => UserId | undefined
-> =>
-  createSelector([getCircleById(id), getUsers], (circle, users) => {
-    if (circle?.owner === undefined) {
+    if (circle === undefined) {
       return undefined;
     }
 
-    return users[circle.owner] !== undefined
-      ? users[circle.owner].name
-      : undefined;
-  });
+    return circle.name;
+  },
+);
 
-export const createCircleMemberIdsSelector = (
-  id: CircleId,
-): OutputSelector<
-  RootState,
-  UserId[] | undefined,
-  (response: Circle) => UserId[] | undefined
-> => createSelector(getCircleById(id), (circle) => circle?.members);
+export const createCircleOwnerIdSelector = createSelector(
+  getCircles,
+  (circles) => (id: CircleId) => {
+    const circle = circles[id];
 
-export const createCircleMembersCountSelector = (
-  id: CircleId,
-): OutputSelector<RootState, number, (response: Circle) => number> =>
-  createSelector(getCircleById(id), (circle) => {
-    const count = circle?.members !== undefined ? circle.members.length : 0;
-    const ownerCount = circle?.owner !== undefined ? 1 : 0;
+    if (circle === undefined) {
+      return undefined;
+    }
 
-    return count + ownerCount;
-  });
+    return circle.owner;
+  },
+);
+
+export const createCircleOwnerNameSelector = createSelector(
+  [getCircles, getUsers],
+  (circles, users) => (id: CircleId) => {
+    const circle = circles[id];
+
+    if (circle === undefined) {
+      return undefined;
+    }
+
+    const owner = users[circle.owner];
+
+    if (owner === undefined) {
+      return undefined;
+    }
+
+    return owner.name;
+  },
+);
+
+export const createCircleMemberIdsSelector = createSelector(
+  getCircles,
+  (circles) => (id: CircleId) => {
+    const circle = circles[id];
+
+    if (circle === undefined) {
+      return undefined;
+    }
+
+    return circle.members;
+  },
+);
+
+export const createCircleMembersCountSelector = createSelector(
+  getCircles,
+  (circles) => (id: CircleId) => {
+    const circle = circles[id];
+
+    if (circle === undefined) {
+      return undefined;
+    }
+
+    const membersCount = circle.members.length;
+    const ownerCount = 1;
+
+    return membersCount + ownerCount;
+  },
+);

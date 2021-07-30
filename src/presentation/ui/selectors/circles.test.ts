@@ -1,8 +1,8 @@
 import { RootState } from '../../state/createStore';
 import { UserType } from '../../state/features/users';
 import {
-  createCircleMembersCountSelector,
-  createCircleOwnerNameSelector,
+  createCircleMembersCountSelector as makeCircleMembersCountSelector,
+  createCircleOwnerNameSelector as makeCircleOwnerNameSelector,
 } from './circles';
 
 let state: RootState;
@@ -26,15 +26,18 @@ beforeEach(() => {
 });
 
 test('createCircleOwnerNameSelector', () => {
+  const createCircleOwnerNameSelector = makeCircleOwnerNameSelector(state);
   const id = '0';
-  const actual = createCircleOwnerNameSelector(id)(state);
+  const actual = createCircleOwnerNameSelector(id);
 
   expect(actual).toBe('Bob');
 });
 
 test('createCircleMembersCountSelector', () => {
   const id = '0';
-  const actual = createCircleMembersCountSelector(id)(state);
+  const createCircleMembersCountSelector =
+    makeCircleMembersCountSelector(state);
+  const actual = createCircleMembersCountSelector(id);
 
   expect(actual).toBe(3);
 });
