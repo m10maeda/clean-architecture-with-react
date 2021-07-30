@@ -63,3 +63,13 @@ export const createCircleMemberIdsSelector = (
   UserId[] | undefined,
   (response: Circle) => UserId[] | undefined
 > => createSelector(getCircleById(id), (circle) => circle?.members);
+
+export const createCircleMembersCountSelector = (
+  id: CircleId,
+): OutputSelector<RootState, number, (response: Circle) => number> =>
+  createSelector(getCircleById(id), (circle) => {
+    const count = circle?.members !== undefined ? circle.members.length : 0;
+    const ownerCount = circle?.owner !== undefined ? 1 : 0;
+
+    return count + ownerCount;
+  });
