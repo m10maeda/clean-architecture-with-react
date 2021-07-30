@@ -1,2 +1,2 @@
-export * from './cirlces';
+export * from './circles';
 export * from './users';
