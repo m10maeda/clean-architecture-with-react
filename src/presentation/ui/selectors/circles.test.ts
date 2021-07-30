@@ -1,8 +1,8 @@
 import { RootState } from '../../state/createStore';
 import { UserType } from '../../state/features/users';
 import {
-  createCircleMembersCountSelector as makeCircleMembersCountSelector,
-  createCircleOwnerNameSelector as makeCircleOwnerNameSelector,
+  makeCircleMembersCountSelector,
+  makeCircleOwnerNameSelector,
 } from './circles';
 
 let state: RootState;

@@ -13,7 +13,7 @@ export const allUserIdsSelector = createSelector(getUsers, (state) =>
   Object.keys(state),
 );
 
-export const createUserNameSelector = createSelector(
+export const makeUserNameSelector = createSelector(
   getUsers,
   (users) => (id: UserId) => {
     const user = users[id];
@@ -26,7 +26,7 @@ export const createUserNameSelector = createSelector(
   },
 );
 
-export const createUserTypeSelector = createSelector(
+export const makeUserTypeSelector = createSelector(
   getUsers,
   (users) => (id: UserId) => {
     const user = users[id];

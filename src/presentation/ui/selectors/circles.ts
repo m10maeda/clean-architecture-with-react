@@ -14,7 +14,7 @@ export const allCircleIdsSelector = createSelector(getCircles, (state) =>
   Object.keys(state),
 );
 
-export const createCircleNameSelector = createSelector(
+export const makeCircleNameSelector = createSelector(
   getCircles,
   (circles) => (id: CircleId) => {
     const circle = circles[id];
@@ -27,7 +27,7 @@ export const createCircleNameSelector = createSelector(
   },
 );
 
-export const createCircleOwnerIdSelector = createSelector(
+export const makeCircleOwnerIdSelector = createSelector(
   getCircles,
   (circles) => (id: CircleId) => {
     const circle = circles[id];
@@ -40,7 +40,7 @@ export const createCircleOwnerIdSelector = createSelector(
   },
 );
 
-export const createCircleOwnerNameSelector = createSelector(
+export const makeCircleOwnerNameSelector = createSelector(
   [getCircles, getUsers],
   (circles, users) => (id: CircleId) => {
     const circle = circles[id];
@@ -59,7 +59,7 @@ export const createCircleOwnerNameSelector = createSelector(
   },
 );
 
-export const createCircleMemberIdsSelector = createSelector(
+export const makeCircleMemberIdsSelector = createSelector(
   getCircles,
   (circles) => (id: CircleId) => {
     const circle = circles[id];
@@ -72,7 +72,7 @@ export const createCircleMemberIdsSelector = createSelector(
   },
 );
 
-export const createCircleMembersCountSelector = createSelector(
+export const makeCircleMembersCountSelector = createSelector(
   getCircles,
   (circles) => (id: CircleId) => {
     const circle = circles[id];
