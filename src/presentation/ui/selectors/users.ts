@@ -8,9 +8,9 @@ import {
   UserType,
 } from '../../state/features/users';
 
-const getUsers = (state: RootState): State => state.users;
+export const getUsers = (state: RootState): State => state.users;
 
-const getById =
+export const getUserById =
   (id: UserId) =>
   (state: RootState): User | undefined =>
     getUsers(state)[id];
@@ -26,7 +26,7 @@ export const createUserNameSelector = (
   UserName | undefined,
   (response: User) => UserName | undefined
 > =>
-  createSelector(getById(id), (user) =>
+  createSelector(getUserById(id), (user) =>
     user !== undefined ? user.name : undefined,
   );
 
@@ -36,4 +36,4 @@ export const createUserTypeSelector = (
   RootState,
   UserType | undefined,
   (response: User) => UserType | undefined
-> => createSelector(getById(id), (user) => user?.type);
+> => createSelector(getUserById(id), (user) => user?.type);

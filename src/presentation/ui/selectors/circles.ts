@@ -8,9 +8,9 @@ import {
 } from '../../state/features/circles';
 import { UserId } from '../../state/features/users';
 
-const getCircles = (state: RootState): State => state.circles;
+export const getCircles = (state: RootState): State => state.circles;
 
-const getById =
+export const getCircleById =
   (id: CircleId) =>
   (state: RootState): Circle | undefined =>
     getCircles(state)[id];
@@ -26,7 +26,7 @@ export const createCircleNameSelector = (
   CircleName | undefined,
   (response: Circle) => CircleName | undefined
 > =>
-  createSelector(getById(id), (circle) =>
+  createSelector(getCircleById(id), (circle) =>
     circle !== undefined ? circle.name : undefined,
   );
 
@@ -36,7 +36,7 @@ export const createCircleOwnerIdSelector = (
   RootState,
   UserId | undefined,
   (response: Circle) => UserId | undefined
-> => createSelector(getById(id), (circle) => circle?.owner);
+> => createSelector(getCircleById(id), (circle) => circle?.owner);
 
 export const createCircleMemberIdsSelector = (
   id: CircleId,
@@ -44,4 +44,4 @@ export const createCircleMemberIdsSelector = (
   RootState,
   UserId[] | undefined,
   (response: Circle) => UserId[] | undefined
-> => createSelector(getById(id), (circle) => circle?.members);
+> => createSelector(getCircleById(id), (circle) => circle?.members);
