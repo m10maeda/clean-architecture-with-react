@@ -1,13 +1,12 @@
 import styled from '@emotion/styled';
-import React, { ReactNode, VFC } from 'react';
+import React, { ComponentPropsWithRef, VFC } from 'react';
 
-type Props = {
-  children: ReactNode;
-  className?: string;
-};
+type Props = ComponentPropsWithRef<'table'>;
 
-const Table: VFC<Props> = ({ children, className }) => (
-  <table className={className}>{children}</table>
+const Table: VFC<Props> = ({ children, className, ...props }) => (
+  <table className={className} {...props}>
+    {children}
+  </table>
 );
 
 const StyledTable = styled(Table)`
