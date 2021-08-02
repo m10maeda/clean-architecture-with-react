@@ -10,6 +10,8 @@ const Item: VFC<Props> = ({ children, className }) => (
   <div className={className}>{children}</div>
 );
 
+Item.displayName = 'ListGroup.Item';
+
 const StyledItem = styled(Item)`
   display: block;
   padding: 0.5rem 1rem;
