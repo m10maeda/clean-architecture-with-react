@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import React, { ReactNode, VFC } from 'react';
+import Item from './Item';
 
 type Props = {
   children: ReactNode;
@@ -16,4 +17,6 @@ const StyledListGroup = styled(ListGroup)`
   border-radius: 0.25rem;
 `;
 
-export default StyledListGroup;
+export default Object.assign(StyledListGroup, {
+  Item,
+});
