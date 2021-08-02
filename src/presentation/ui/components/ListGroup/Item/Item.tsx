@@ -14,15 +14,9 @@ Item.displayName = 'ListGroup.Item';
 const StyledItem = styled(Item)`
   display: block;
   padding: 0.5rem 1rem;
-  text-decoration: none;
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.125);
   color: rgba(0, 0, 0, 0.9);
-
-  &:focus,
-  &:hover {
-    background-color: #f8f9fa;
-  }
 
   & + & {
     border-top-width: 0;
