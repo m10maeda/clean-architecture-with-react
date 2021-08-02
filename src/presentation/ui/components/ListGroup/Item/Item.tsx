@@ -1,13 +1,12 @@
 import styled from '@emotion/styled';
-import React, { ReactNode, VFC } from 'react';
+import React, { ComponentPropsWithRef, VFC } from 'react';
 
-type Props = {
-  children: ReactNode;
-  className?: string;
-};
+type Props = ComponentPropsWithRef<'li'>;
 
-const Item: VFC<Props> = ({ children, className }) => (
-  <div className={className}>{children}</div>
+const Item: VFC<Props> = ({ children, className, ...props }) => (
+  <li className={className} {...props}>
+    {children}
+  </li>
 );
 
 Item.displayName = 'ListGroup.Item';
