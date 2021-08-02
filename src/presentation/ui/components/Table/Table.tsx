@@ -34,17 +34,6 @@ const StyledTable = styled(Table)`
       text-align: left;
     }
   }
-
-  /* thead,
-  tbody,
-  tfoot,
-  tr,
-  th,
-  td {
-    border-color: inherit;
-    border-style: solid;
-    border-bottom-width: 1px;
-  } */
 `;
 
 export default StyledTable;
