@@ -5,7 +5,7 @@ import CircleList from './CircleList';
 
 const CircleListPage: VFC = () => {
   useEffect(() => {
-    document.title = 'User List';
+    document.title = 'Circle List';
   }, []);
 
   const history = useHistory();
