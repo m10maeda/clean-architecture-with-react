@@ -1,5 +1,6 @@
-import React, { useEffect, VFC } from 'react';
-import { PageHeader } from '../../components';
+import React, { useCallback, useEffect, VFC } from 'react';
+import { useHistory } from 'react-router-dom';
+import { Button, PageHeader } from '../../components';
 import CircleList from './CircleList';
 
 const CircleListPage: VFC = () => {
@@ -7,9 +8,17 @@ const CircleListPage: VFC = () => {
     document.title = 'User List';
   }, []);
 
+  const history = useHistory();
+
+  const handleClick = useCallback(() => {
+    history.push('/circles/new');
+  }, [history]);
+
   return (
     <>
       <PageHeader>Circle List</PageHeader>
+
+      <Button onClick={handleClick}>Register New Circle</Button>
 
       <CircleList />
     </>
