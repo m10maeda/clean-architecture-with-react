@@ -71,6 +71,11 @@ const StyledButton = styled(Button)`
       box-shadow: 0 0 0 0.25rem rgb(130 138 145 / 50%);
     }
   }
+
+  &[disabled] {
+    pointer-events: none;
+    opacity: 0.65;
+  }
 `;
 
 export default StyledButton;
