@@ -37,6 +37,16 @@ const StyledFormControl = styled(FormControl)`
     box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
   }
 
+  &[aria-invalid='true'],
+  &:invalid {
+    border-color: #dc3545;
+
+    &:focus {
+      border-color: #dc3545;
+      box-shadow: 0 0 0 0.25rem rgb(220 53 69 / 25%);
+    }
+  }
+
   &--plaintext {
     padding-right: 0;
     padding-left: 0;
