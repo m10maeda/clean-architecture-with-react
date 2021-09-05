@@ -3,16 +3,42 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
+    "@reduxjs/toolkit": "^1.6.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@types/classnames": "^2.3.1",
     "@types/jest": "^26.0.15",
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@types/react-redux": "^7.1.18",
+    "@types/react-router-dom": "^5.1.8",
+    "@types/redux-logger": "^3.0.9",
+    "@typescript-eslint/eslint-plugin": "^4.4.1",
+    "@typescript-eslint/parser": "^4.0.0",
+    "classnames": "^2.3.1",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^24.3.6",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "husky": "^7.0.0",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "redux-logger": "^3.0.6",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
@@ -20,12 +46,79 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prepare": "husky install",
+    "eslint": "eslint --ext .jsx,.js,.ts,.tsx ./src"
+  },
+  "lint-staged": {
+    "src/**/*.{json,css,scss,md}": [
+      "prettier --write"
+    ],
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --ext .jsx,.js,.ts,.tsx --fix"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all"
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "airbnb-typescript",
+      "airbnb/hooks",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:promise/recommended",
+      "plugin:jest/recommended",
+      "plugin:eslint-comments/recommended",
+      "prettier"
+    ],
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "rules": {
+      "no-underscore-dangle": [
+        "error",
+        {
+          "allowAfterThis": true,
+          "enforceInMethodNames": true
+        }
+      ],
+      "@typescript-eslint/no-empty-interface": [
+        "error",
+        {
+          "allowSingleExtends": true
+        }
+      ],
+      "react/prop-types": "off",
+      "react/jsx-props-no-spreading": "off"
+    },
+    "overrides": [
+      {
+        "files": "src/presentation/state/features/**/*.ts",
+        "rules": {
+          "no-param-reassign": [
+            "error",
+            {
+              "props": true,
+              "ignorePropertyModificationsFor": [
+                "acc",
+                "accumulator",
+                "e",
+                "ctx",
+                "context",
+                "req",
+                "request",
+                "res",
+                "response",
+                "$scope",
+                "staticContext",
+                "draft"
+              ]
+            }
+          ]
+        }
+      }
     ]
   },
   "browserslist": {
