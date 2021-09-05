@@ -13,7 +13,7 @@ const UserContainer: VFC<Props> = ({ id }) => {
     return null;
   }
 
-  return <User id={id} name={user.name} />;
+  return <User id={id} name={user.name} isPremium={user.isPremium} />;
 };
 
 export default UserContainer;

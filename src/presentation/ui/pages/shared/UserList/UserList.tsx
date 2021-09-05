@@ -11,12 +11,14 @@ const UserList: VFC<Props> = ({ ids }) => (
     <colgroup>
       <col style={{ width: '5em' }} />
       <col />
+      <col />
     </colgroup>
 
     <thead>
       <tr>
         <th scope="col">ID</th>
         <th scope="col">Name</th>
+        <th scope="col">Type</th>
       </tr>
     </thead>
 
