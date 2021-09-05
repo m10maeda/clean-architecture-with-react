@@ -25,19 +25,26 @@ const StyledFormControl = styled(FormControl)`
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
-  color: #212529;
   background-color: #fff;
   border: 1px solid #ced4da;
   appearance: none;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  outline: 0;
 
   &:focus {
-    color: #212529;
-    background-color: #fff;
     border-color: #86b7fe;
-    outline: 0;
     box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+  }
+
+  &[aria-invalid='true'],
+  &:invalid {
+    border-color: #dc3545;
+
+    &:focus {
+      border-color: #dc3545;
+      box-shadow: 0 0 0 0.25rem rgb(220 53 69 / 25%);
+    }
   }
 
   &--plaintext {
@@ -46,7 +53,11 @@ const StyledFormControl = styled(FormControl)`
     border-right: 0;
     border-left: 0;
     border-color: transparent;
-    outline: 0;
+
+    &:focus {
+      border-color: transparent;
+      box-shadow: none;
+    }
   }
 `;
 

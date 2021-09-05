@@ -1,7 +1,5 @@
 import styled from '@emotion/styled';
 import React, { ComponentPropsWithRef, ElementType, VFC } from 'react';
-import Controls from './Controls';
-import Label from './Label';
 
 type Props = ComponentPropsWithRef<'div'> & {
   as?: ElementType;
@@ -23,7 +21,4 @@ const StyledFormGroup = styled(FormGroup)`
   clear: both;
 `;
 
-export default Object.assign(StyledFormGroup, {
-  Label,
-  Controls,
-});
+export default StyledFormGroup;
