@@ -14,6 +14,11 @@ export const allCircleIdsSelector = createSelector(getCircles, (state) =>
   Object.keys(state),
 );
 
+export const makeCircleIsExistsSelector = createSelector(
+  getCircles,
+  (circles) => (id: CircleId) => circles[id] !== undefined,
+);
+
 export const makeCircleNameSelector = createSelector(
   getCircles,
   (circles) => (id: CircleId) => {

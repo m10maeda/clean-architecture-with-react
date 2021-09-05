@@ -13,6 +13,11 @@ export const allUserIdsSelector = createSelector(getUsers, (state) =>
   Object.keys(state),
 );
 
+export const makeUserIsExistsSelector = createSelector(
+  getUsers,
+  (users) => (id: UserId) => users[id] !== undefined,
+);
+
 export const makeUserNameSelector = createSelector(
   getUsers,
   (users) => (id: UserId) => {
