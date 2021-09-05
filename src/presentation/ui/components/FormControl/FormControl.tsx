@@ -43,6 +43,11 @@ const StyledFormControl = styled(FormControl)`
     border-right: 0;
     border-left: 0;
     border-color: transparent;
+
+    &:focus {
+      border-color: transparent;
+      box-shadow: none;
+    }
   }
 `;
 
