@@ -1,6 +1,6 @@
 import React, { VFC } from 'react';
 import { useSelector } from 'react-redux';
-import { allUserIdsSelector } from '../../../selectors';
+import { allUserIdsSelector } from '../../../../selectors';
 import AllUserList from './AllUserList';
 
 const AllUserListContainer: VFC = () => {

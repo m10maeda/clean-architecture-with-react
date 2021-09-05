@@ -1,5 +1,5 @@
 import React, { VFC } from 'react';
-import { UserList } from '../../shared';
+import { UserList } from '../../../shared';
 
 type Props = {
   ids: string[];

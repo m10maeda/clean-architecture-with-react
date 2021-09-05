@@ -1,5 +1,5 @@
 import React, { VFC } from 'react';
-import { CircleList as PureCircleList } from '../../shared';
+import { CircleList as PureCircleList } from '../../../shared';
 
 type Props = {
   ids: string[];
