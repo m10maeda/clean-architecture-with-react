@@ -46,6 +46,9 @@ const StyledButton = styled(Button)`
       color: #fff;
       background-color: #0b5ed7;
       border-color: #0a58ca;
+    }
+
+    &:focus {
       outline: 0;
       box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
     }
@@ -61,6 +64,9 @@ const StyledButton = styled(Button)`
       color: #fff;
       background-color: #5c636a;
       border-color: #565e64;
+    }
+
+    &:focus {
       outline: 0;
       box-shadow: 0 0 0 0.25rem rgb(130 138 145 / 50%);
     }
