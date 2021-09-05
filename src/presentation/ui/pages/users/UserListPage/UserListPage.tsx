@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, VFC } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Button, PageHeader } from '../../components';
+import { Button, PageHeader } from '../../../components';
 import AllUserList from './AllUserList';
 
 const UserListPage: VFC = () => {
